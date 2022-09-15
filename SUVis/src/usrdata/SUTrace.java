@@ -58,6 +58,7 @@ public class SUTrace {
         try {
             m_header.readFromFile(pInput);
             char ns = m_header.ns;
+            System.out.println("readFromFile(InputStream pInput, boolean pSkipData) ns: " + ns + "\n");
             if (ns > 0) {
                 if (pSkipData) {
                     pInput.skip(ns * Float.SIZE / 8);

@@ -1,4 +1,5 @@
 package usrdata;
+
 /*
  * SUSection.java 
  *
@@ -10,29 +11,73 @@ package usrdata;
  * Department of Geophysics
  *  
  */
-
 import java.io.DataInputStream;
 import java.util.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.RandomAccessFile;
+import java.nio.ByteOrder;
 import javax.swing.JOptionPane;
 
 /**
- * The SUSection class represents a colection of data
- * in the SU format.
- * 
+ * The SUSection class represents a collection of data in the SU format.
+ *
  * @author Williams Lima
  */
 public class SUSection {
 
-    /** Creates a new instance of SUSection */
+    /**
+     * Creates a new instance of SUSection
+     */
     public SUSection() {
         preStakcData = false;
         amplitude = 1;
         eof = false;
         m_xdr = true;
-    
+        
+    }
+
+    /**
+     * Try automatically define whether the byte swapping is needed or not
+     *
+     * @param file SU file
+     */
+    public void formatFromFile(String file) {
+        try {
+            // RandomAccessFile treates bytes as BIG Endian
+            RandomAccessFile raf = new RandomAccessFile(file, "r");
+            raf.seek(114);
+            short n_samp_be = raf.readShort();
+            short n_samp_le = Short.reverseBytes(n_samp_be);
+            long filesize = raf.length();
+            long rem_1b_be = filesize % (n_samp_be+240);
+            long rem_2b_be = filesize % (n_samp_be*2+240);
+            long rem_4b_be = filesize % (n_samp_be*4+240);
+            long rem_1b_le = filesize % (n_samp_le+240);
+            long rem_2b_le = filesize % (n_samp_le*2+240);
+            long rem_4b_le = filesize % (n_samp_le*4+240);
+            
+            // usually SEGY in BIG Endian
+            ByteOrder file_endian = ByteOrder.BIG_ENDIAN;
+            if (filesize > n_samp_be && n_samp_be > 0 && (rem_4b_be == 0 || rem_2b_be == 0 || rem_1b_be == 0)) {
+                file_endian = ByteOrder.BIG_ENDIAN;
+            } else if (filesize > n_samp_le && n_samp_le > 0 && (rem_4b_le == 0 || rem_2b_le == 0 || rem_1b_le == 0)) {
+                file_endian = ByteOrder.LITTLE_ENDIAN;
+            }
+
+            if (ByteOrder.nativeOrder().equals(file_endian)) {
+                m_xdr = false;
+            } else {
+                m_xdr = true;
+            }
+            raf.close();
+        } catch (IOException ex) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "Cant read file!", "Alert",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void addTrace(SUTrace pTrace) {
@@ -109,7 +154,8 @@ public class SUSection {
             } else {
                 if (m_seismic) {
                     d1 = 0.004f;
-                } else { /* non-seismic data */
+                } else {
+                    /* non-seismic data */
                     d1 = 1.0f;
                 }
             }
@@ -174,7 +220,7 @@ public class SUSection {
         if (!isPreStakcData()) {
             for (int i = 0; i < pNumTraces; i++) {
                 tr = new SUTrace();
-                tr.readFromFile(pInputFile, false,m_xdr);
+                tr.readFromFile(pInputFile, false, m_xdr);
                 m_traces.add(tr);
             }
         } else {
@@ -188,22 +234,23 @@ public class SUSection {
 
         return true;
     }
-    
-    public void setFormat(String format){
+
+    public void setFormat(String format) {
         m_xdr = true;
-        
-        if(format.equalsIgnoreCase("no-xdr")){
+
+        if (format.equalsIgnoreCase("no-xdr")) {
             m_xdr = false;
         }
     }
 
     public void readFromInputStream(InputStream input) {
 
-        if(isEof())
+        if (isEof()) {
             return;
+        }
 
         SUTrace trace = new SUTrace();
-        trace.readFromFile(input, false,m_xdr);
+        trace.readFromFile(input, false, m_xdr);
         m_traces.clear();
         boolean flag = false;
         try {
@@ -211,7 +258,7 @@ public class SUSection {
                 m_traces.add(trace);
                 while (input.available() > 0) {
                     trace = new SUTrace();
-                    trace.readFromFile(input, false,m_xdr);
+                    trace.readFromFile(input, false, m_xdr);
                     m_traces.add(trace);
                 }
             } else {
@@ -223,7 +270,7 @@ public class SUSection {
                 ekey = skey = m_traces.get(0).getHeader().getValue(pkey);
                 while (input.available() > 0 && !flag) {
                     trace = new SUTrace();
-                    trace.readFromFile(input, false,m_xdr);
+                    trace.readFromFile(input, false, m_xdr);
                     ekey = trace.getHeader().getValue(pkey);
                     if (skey == ekey) {
                         m_traces.add(trace);
@@ -232,7 +279,7 @@ public class SUSection {
                         flag = true;
                     }
                 }
-                if(!flag){
+                if (!flag) {
                     JOptionPane.showMessageDialog(null, "End of file!");
                     eof = true;
                 }
@@ -256,12 +303,12 @@ public class SUSection {
                 java.io.FileInputStream ifStream = new java.io.FileInputStream(inpF);
                 SUTrace tr = null;
                 tr = new SUTrace();
-                tr.readFromFile(ifStream, false,m_xdr);
+                tr.readFromFile(ifStream, false, m_xdr);
                 m_traces.add(tr);
                 long ntraces = inpF.length() / (240 + tr.getHeader().ns * 4);
                 for (int i = 0; i < ntraces - 1; i++) {
                     tr = new SUTrace();
-                    tr.readFromFile(ifStream, false,m_xdr);
+                    tr.readFromFile(ifStream, false, m_xdr);
                     m_traces.add(tr);
                 }
             } else {
@@ -279,7 +326,7 @@ public class SUSection {
 
     public void writeToFile(FileOutputStream pOutputFile) {
         for (int i = 0; i < m_traces.size(); i++) {
-            m_traces.get(i).writeToFile(pOutputFile,m_xdr);
+            m_traces.get(i).writeToFile(pOutputFile, m_xdr);
         }
     }
 
@@ -323,17 +370,29 @@ public class SUSection {
     private SUTrace oldTrace;
     private float amplitude;
     int m_n1;
-    /**< Number of samples in 1st dimension. */
+    /**
+     * < Number of samples in 1st dimension.
+     */
     int m_n2;
-    /**< Number of samples in 2nd dimension. */
+    /**
+     * < Number of samples in 2nd dimension.
+     */
     float m_f1;
-    /**< First value in 1st dimension. */
+    /**
+     * < First value in 1st dimension.
+     */
     float m_f2;
-    /**< First value in 2nd dimension. */
+    /**
+     * < First value in 2nd dimension.
+     */
     float m_d1;
-    /**< Sampling interval in 1st dimension. */
+    /**
+     * < Sampling interval in 1st dimension.
+     */
     float m_d2;
-    /** xdr format */
+    /**
+     * xdr format
+     */
     boolean m_xdr;
 
     /**
@@ -342,5 +401,7 @@ public class SUSection {
     public boolean isEof() {
         return eof;
     }
-    /**< Sampling interval in 2nd dimension. */
+    /**
+     * < Sampling interval in 2nd dimension.
+     */
 }

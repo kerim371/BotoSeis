@@ -283,7 +283,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jSplitPane2.setRightComponent(jScrollPane4);
 
-        jToolBar3.setFloatable(false);
         jToolBar3.setRollover(true);
 
         btnMoveTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botoseis/pics/Top16.gif"))); // NOI18N
@@ -356,7 +355,6 @@ public class MainWindow extends javax.swing.JFrame {
         panelWorkflow.setLayout(new javax.swing.BoxLayout(panelWorkflow, javax.swing.BoxLayout.LINE_AXIS));
         scrollPaneA.setViewportView(panelWorkflow);
 
-        jToolBar4.setFloatable(false);
         jToolBar4.setRollover(true);
 
         btnRun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botoseis/pics/Play16.gif"))); // NOI18N
@@ -378,10 +376,10 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelWLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrollPaneA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(scrollPaneA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelWLayout.createSequentialGroup()
                         .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                         .addComponent(jToolBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -405,7 +403,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel17.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 11));
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("Output");
         jLabel9.setAlignmentX(0.5F);
@@ -417,7 +415,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +438,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(m_processOutputTab, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+                    .addComponent(m_processOutputTab, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel16Layout.setVerticalGroup(
@@ -474,7 +472,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
-        labelProjectExplorer.setFont(new java.awt.Font("Dialog", 1, 11));
+        labelProjectExplorer.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         labelProjectExplorer.setForeground(new java.awt.Color(204, 204, 204));
         labelProjectExplorer.setText("Project explorer - ");
         labelProjectExplorer.setAlignmentX(0.5F);
@@ -522,7 +520,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Processes list");
         jLabel3.setAlignmentX(0.5F);
@@ -550,7 +548,7 @@ public class MainWindow extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAddProcessToWorkflow)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         comboProcessesList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Williams", "Maria", "Olinda", "Joao", "Carlos", "Marcos", "Madalena", "Wanderley", "Wagner", "Julio" }));
@@ -603,7 +601,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1048, Short.MAX_VALUE)
+            .addGap(0, 1036, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -734,7 +732,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
+                    .addComponent(jSplitPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())

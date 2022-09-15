@@ -956,7 +956,7 @@ private void btnClipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             } else if ("skey".equalsIgnoreCase(key[0])) {
                 skey = key[1];
             } else if ("saveSec".equalsIgnoreCase(key[0])) {
-                saveSection = new Integer(key[1]);
+                saveSection = Integer.valueOf(key[1]);
             }
         }
         saveSection = (saveSection == null) ? 11 : saveSection + 1;

@@ -127,6 +127,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="mainMenuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
@@ -149,7 +150,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSplitPane3" alignment="0" pref="1052" max="32767" attributes="0"/>
+                  <Component id="jSplitPane3" alignment="0" pref="1040" max="32767" attributes="0"/>
                   <Component id="jToolBar1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel6" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -240,10 +241,10 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="scrollPaneA" alignment="0" pref="376" max="32767" attributes="0"/>
+                                  <Component id="scrollPaneA" alignment="0" pref="388" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jToolBar3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="192" max="32767" attributes="0"/>
+                                      <EmptySpace pref="217" max="32767" attributes="0"/>
                                       <Component id="jToolBar4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -267,7 +268,6 @@
                   <SubComponents>
                     <Container class="javax.swing.JToolBar" name="jToolBar3">
                       <Properties>
-                        <Property name="floatable" type="boolean" value="false"/>
                         <Property name="rollover" type="boolean" value="true"/>
                       </Properties>
 
@@ -374,7 +374,6 @@
                     </Container>
                     <Container class="javax.swing.JToolBar" name="jToolBar4">
                       <Properties>
-                        <Property name="floatable" type="boolean" value="false"/>
                         <Property name="rollover" type="boolean" value="true"/>
                       </Properties>
 
@@ -426,7 +425,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="m_processOutputTab" alignment="0" pref="730" max="32767" attributes="1"/>
+                              <Component id="m_processOutputTab" alignment="0" pref="725" max="32767" attributes="1"/>
                               <Component id="jPanel17" alignment="0" max="32767" attributes="1"/>
                           </Group>
                       </Group>
@@ -456,7 +455,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" pref="261" max="-2" attributes="0"/>
-                              <EmptySpace pref="457" max="32767" attributes="0"/>
+                              <EmptySpace pref="458" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -700,7 +699,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="btnAddProcessToWorkflow" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="3" pref="19" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -784,7 +783,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1048" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1036" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

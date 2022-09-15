@@ -1,6 +1,6 @@
 &all
-stack=yes
-saveSec=1
+stack=no
+saveSec=
 pkey=cdp
 skey=offset
 /

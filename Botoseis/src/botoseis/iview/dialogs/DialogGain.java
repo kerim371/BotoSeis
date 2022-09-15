@@ -50,11 +50,6 @@ public class DialogGain extends javax.swing.JDialog {
         cbMbal = new javax.swing.JCheckBox();
         cbMaxbal = new javax.swing.JCheckBox();
         cbJon = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfTpow = new javax.swing.JTextField();
@@ -76,9 +71,13 @@ public class DialogGain extends javax.swing.JDialog {
         tfTrap = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         tfBias = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -110,39 +109,6 @@ public class DialogGain extends javax.swing.JDialog {
         jPanel2.add(cbJon);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
-        jPanel3.setPreferredSize(new java.awt.Dimension(306, 80));
-        jPanel3.setLayout(new java.awt.GridLayout(2, 0));
-
-        jButton1.setText("Reset to default values");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton1);
-
-        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton2);
-
-        jButton3.setText("Apply");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton3);
-
-        jPanel3.add(jPanel5);
-
-        jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel4.setPreferredSize(new java.awt.Dimension(306, 100));
         jPanel4.setLayout(new java.awt.GridLayout(5, 4));
@@ -209,6 +175,37 @@ public class DialogGain extends javax.swing.JDialog {
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
+        jPanel3.setPreferredSize(new java.awt.Dimension(306, 80));
+
+        jButton1.setText("set defaults...");
+        jButton1.setActionCommand("Set defaults...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+
+        jButton3.setText("Ok");
+        jButton3.setActionCommand("Ok");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3);
+        jButton3.getAccessibleContext().setAccessibleName("Ok");
+
+        jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
+
         getContentPane().add(jPanel1);
 
         pack();
@@ -219,6 +216,11 @@ public class DialogGain extends javax.swing.JDialog {
         apply= true;
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        apply = false;
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -234,41 +236,36 @@ public class DialogGain extends javax.swing.JDialog {
         tfBias.setText("0.0");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            apply = false;
-            dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     public float getFloatValue(String parm) {
         if (parm.equals("tpow")) {
-            return new Float(tfTpow.getText());
+            return Float.parseFloat(tfTpow.getText());
         } else {
             if (parm.equals("epow")) {
-                return new Float(tfEpow.getText());
+                return Float.parseFloat(tfEpow.getText());
             } else {
                 if (parm.equals("gpow")) {
-                    return new Float(tfGpow.getText());
+                    return Float.parseFloat(tfGpow.getText());
                 } else {
                     if (parm.equals("wagc")) {
-                        return new Float(tfWagc.getText());
+                        return Float.parseFloat(tfWagc.getText());
                     } else {
                         if (parm.equals("trap")) {
-                            return new Float(tfTrap.getText());
+                            return Float.parseFloat(tfTrap.getText());
                         } else {
                             if (parm.equals("scale")) {
-                                return new Float(tfScale.getText());
+                                return Float.parseFloat(tfScale.getText());
                             } else {
                                 if (parm.equals("norm")) {
-                                    return new Float(tfNorm.getText());
+                                    return Float.parseFloat(tfNorm.getText());
                                 } else {
                                     if (parm.equals("bias")) {
-                                        return new Float(tfBias.getText());
+                                        return Float.parseFloat(tfBias.getText());
                                     } else {
                                         if (parm.equals("gclip")) {
-                                            return new Float(tfGclip.getText());
+                                            return Float.parseFloat(tfGclip.getText());
                                         } else {
                                             if (parm.equals("clip")) {
-                                                return new Float(tfClip.getText());
+                                                return Float.parseFloat(tfClip.getText());
                                             }
                                         }
                                     }
@@ -364,7 +361,6 @@ public class DialogGain extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField tfBias;
     private javax.swing.JTextField tfClip;
     private javax.swing.JTextField tfEpow;

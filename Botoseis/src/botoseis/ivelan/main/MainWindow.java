@@ -256,6 +256,9 @@ public class MainWindow extends javax.swing.JFrame {
         jSeparator3.setVisible(false);
         jSeparator4.setVisible(false);
         jSeparator1.setVisible(false);
+        
+        dlgOpt = new botoseis.ivelan.dialogs.VelanDlg(this, true);
+
 
     }
 
@@ -414,7 +417,6 @@ public class MainWindow extends javax.swing.JFrame {
         panelCVS.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelCVS.setLayout(new javax.swing.BoxLayout(panelCVS, javax.swing.BoxLayout.LINE_AXIS));
 
-        colorbarPanel2.setBackground(java.awt.SystemColor.activeCaption);
         colorbarPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setForeground(java.awt.Color.white);
@@ -475,7 +477,6 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         jToolBar1.setBorder(null);
-        jToolBar1.setFloatable(false);
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
 
@@ -531,7 +532,7 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu1.setMnemonic('F');
         jMenu1.setText("File");
 
-        fileNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        fileNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         fileNew.setText("New...");
         fileNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -540,7 +541,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         jMenu1.add(fileNew);
 
-        fileOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        fileOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         fileOpen.setText("Open...");
         fileOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -558,7 +559,7 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu1.add(fileClose);
         jMenu1.add(jSeparator3);
 
-        fileSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        fileSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         fileSave.setText("Save");
         fileSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,7 +578,7 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu1.add(fileExportPicks);
         jMenu1.add(jSeparator1);
 
-        fileExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK));
+        fileExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_DOWN_MASK));
         fileExit.setMnemonic('x');
         fileExit.setText("Exit");
         fileExit.addActionListener(new java.awt.event.ActionListener() {
@@ -632,20 +633,22 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                    .addComponent(jSplitPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -870,6 +873,7 @@ private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
 
         workOnCDP(m_curCDP);
+        applyGain();
 
         btnPrev.setEnabled(true);
     }
@@ -987,6 +991,7 @@ private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
 
         workOnCDP(m_curCDP);
+        applyGain();
 
         btnNext.setEnabled(true);
     }
@@ -1051,6 +1056,7 @@ private void fileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void btnNMOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNMOActionPerformed
     if (m_ready) {
         showNMO(m_curCDP);
+        applyGain();
         gfxPanelCDP.repaint();
     }
 }//GEN-LAST:event_btnNMOActionPerformed
@@ -1058,6 +1064,7 @@ private void btnNMOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 private void btnCDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCDPActionPerformed
     if (m_ready) {
         showCDP(m_curCDP);
+        applyGain();
         gfxPanelCDP.repaint();
     }
 }//GEN-LAST:event_btnCDPActionPerformed
@@ -1069,15 +1076,18 @@ private void menuShowIntervalVelActionPerformed(java.awt.event.ActionEvent evt) 
 }//GEN-LAST:event_menuShowIntervalVelActionPerformed
 
 private void optionsVelanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsVelanActionPerformed
-    botoseis.ivelan.dialogs.VelanDlg dlg = new botoseis.ivelan.dialogs.VelanDlg(this, true,m_vmax,m_vmin,(int) ((m_vmax - m_vmin)/m_dv) );
 
-    dlg.setVisible(true);
+    dlgOpt.setVMax(m_vmax);
+    dlgOpt.setVMin(m_vmin);
+    dlgOpt.setNV((int) ((m_vmax - m_vmin)/m_dv));
+    
+    dlgOpt.setVisible(true);
 
-    int nv = dlg.getNV();
+    int nv = dlgOpt.getNV();
 
-    if (dlg.isOK()) {
-        float vmin = dlg.getVMin();
-        float vmax = dlg.getVMax();
+    if (dlgOpt.isOK()) {
+        float vmin = dlgOpt.getVMin();
+        float vmax = dlgOpt.getVMax();
 
         m_vmin = vmin;
         m_vmax = vmax;
@@ -1087,8 +1097,53 @@ private void optionsVelanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         showSemblance(m_curCDP);
         panelSemblance.repaint();
 
+        applyGain();
+
     }
 }//GEN-LAST:event_optionsVelanActionPerformed
+
+private void applyGain() {
+        Boolean panel = dlgOpt.getBooleanValue("panel");
+        Float tpow = dlgOpt.getFloatValue("tpow");
+        Float epow = dlgOpt.getFloatValue("epow");
+        Float gpow = dlgOpt.getFloatValue("gpow");
+        Boolean agc = dlgOpt.getBooleanValue("agc");
+        Boolean gagc = dlgOpt.getBooleanValue("gagc");
+        Float wagc = dlgOpt.getFloatValue("wagc");
+        Float trap = dlgOpt.getFloatValue("trap");
+        Float clip = dlgOpt.getFloatValue("clip");
+        Float qclip = dlgOpt.getFloatValue("gclip");
+        Boolean qbal = dlgOpt.getBooleanValue("qbal");
+        Boolean pbal = dlgOpt.getBooleanValue("pbal");
+        Boolean mbal = dlgOpt.getBooleanValue("mbal");
+        Boolean maxbal = dlgOpt.getBooleanValue("maxbal");
+        Float scale = dlgOpt.getFloatValue("scale");
+        Float norm = dlgOpt.getFloatValue("norm");
+        Float bias = dlgOpt.getFloatValue("bias");
+        Boolean jon = dlgOpt.getBooleanValue("jon");
+
+        Vector<gfx.SVActor> actors_cdp = gfxPanelCDP.getActors();
+        for (int i = 0; i < actors_cdp.size(); i++) {
+            gfx.SVWiggle actor = (gfx.SVWiggle) actors_cdp.get(i);
+            if (actor != null) {
+                actor.applyGain(panel, tpow, epow, gpow, agc,
+                        gagc, wagc, trap, clip, qclip,
+                        qbal, pbal, mbal, maxbal, scale,
+                        norm, bias, jon);
+            }
+        }
+
+        Vector<gfx.SVActor> actors_cvs = gfxPanelCVS.getActors();
+        for (int i = 0; i < actors_cvs.size(); i++) {
+            gfx.SVColorScale actor = (gfx.SVColorScale) actors_cvs.get(i);
+            if (actor != null) {
+                actor.applyGain(panel, tpow, epow, gpow, agc,
+                        gagc, wagc, trap, clip, qclip,
+                        qbal, pbal, mbal, maxbal, scale,
+                        norm, bias, jon);
+            }
+        }
+    }
 
 private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
     savePicksToFile(new java.io.File(m_picksFilePath));
@@ -1187,6 +1242,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
             p.waitFor();
 
             usrdata.SUSection sc = new usrdata.SUSection();
+            sc.formatFromFile(nmoF);
             sc.readFromFile(nmoF);
 
             int n1 = sc.getN1();
@@ -1245,6 +1301,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
             p.waitFor();
 
             usrdata.SUSection sc = new usrdata.SUSection();
+            sc.formatFromFile(outF);
             sc.readFromFile(outF);
             
             int n1 = sc.getN1();
@@ -1316,7 +1373,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
             String[] sa = new String[cmd.size()];
             cmd.toArray(sa);
 
-             String exec = "";
+            String exec = "";
             for (int i = 0; i < sa.length; i++) {
                 exec += sa[i]+"  ";
             }
@@ -1327,6 +1384,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
             p.waitFor();
 
             usrdata.SUSection sc = new usrdata.SUSection();
+            sc.formatFromFile(smapF);
             sc.readFromFile(smapF);
 
             int n1 = sc.getN1();
@@ -1371,6 +1429,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
             java.io.File inpF = new java.io.File(m_inputFilePath);
             java.io.FileInputStream ifS = new java.io.FileInputStream(inpF);
 
+            sc.formatFromFile(m_inputFilePath);
             sc.readFromFile(ifS, 2);
 
             int[] cdps = sc.getListOfCDPs();
@@ -1404,6 +1463,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
             p.waitFor();
 
             sc = new usrdata.SUSection();
+            sc.formatFromFile(cvsF);
             sc.readFromFile(cvsF);
 
             int n1 = sc.getN1();
@@ -1494,6 +1554,14 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
         m_cvsvmax = m_vmax;
 
         m_ready = validateParameters();
+        
+        // set defaul values for the dialog
+        if (dlgOpt != null) {
+            dlgOpt.setVMinDefault(m_vmin);
+            dlgOpt.setVMaxDefault(m_vmax);
+            dlgOpt.setNVDefault((int) ((m_vmax-m_vmin)/m_dv));
+            dlgOpt.restoreToDefault();
+        }
 
         if (m_ready) {
             setupProject();
@@ -1915,6 +1983,8 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
     private int m_cvsNumPanels; // Number of CVS panels
     private float m_cvsvmin = 0.0f;
     private float m_cvsvmax = 0.0f;
+    
+    botoseis.ivelan.dialogs.VelanDlg dlgOpt;
     //
     gfx.SVAxis m_timeAxis;
     gfx.SVAxis m_cdpOffsetAxis;
